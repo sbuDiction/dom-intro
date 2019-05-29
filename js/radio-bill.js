@@ -15,15 +15,15 @@ function checkedRadioBtn() {
 
     }
     if (billItemType === "call") {
-        callsTotal += 2.75;
+        callsTotalTwo += 2.75;
     } else if (billItemType === "sms") {
-        smsTotal += 0.75;
+        smsTotalTwo += 0.75;
     }
 
     //update the totals that is displayed on the screen.
-    totalCostCalls.innerHTML = callsTotal.toFixed(2);
-    totalCostSms.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
+    totalCostCalls.innerHTML = callsTotalTwo.toFixed(2);
+    totalCostSms.innerHTML = smsTotalTwo.toFixed(2);
+    var totalCost = callsTotalTwo + smsTotalTwo;
     totalCostElement.innerHTML = totalCost.toFixed(2);
 
     if (totalCost >= 50) {
