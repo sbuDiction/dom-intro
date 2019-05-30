@@ -20,59 +20,78 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
-var billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings");
-var addBtn = document.querySelector(".radioAddBtn");
-var callTotalDisplay = document.querySelector(".callTotalSettings");
-var smsTotalDisplay = document.querySelector(".smsTotalSettings");
-var totalBill = document.querySelector(".totalSettings");
-//reference for the input field. 
-var callCostRef = document.querySelector(".callCostSetting");
-var smsCostRef = document.querySelector(".smsCostSetting");
-//reference for the warning levels.
-var warningRef = document.querySelector(".warningLevelSetting");
-var criticalRef = document.querySelector(".criticalLevelSetting");
-//reference for the update btn.
-var updateBtn = document.querySelector(".updateSettings");
+var radioType = document.querySelector(".billItemTypeWithSettings");
+var radioElement = document.querySelector(".radioAddBtnSettings");
+var allCallsTotal = document.querySelector(".callTotalSettings");
+var allSmssTotal = document.querySelector(".smsTotalSettings");
+var settingsTotal = document.querySelector(".totalSettings");
 
-//variables for settings
+//settings reference
+var CostCall = 0;
+var SmsCost = 0;
+var warning = 0;
+var critical = 0;
+
+//check button function variables
 var inputCall = 0;
 var inputSms = 0;
 
-//total sms and calls var
-var callsTotalSet = 0;
-var smsTotalSet = 0;
-var allCostTotal = 0;
+//variables for the settings
+var callCostElememts = document.querySelector(".callCostSetting");
+var smsCostElement = document.querySelector(".smsCostSetting");
+var warningLev = document.querySelector(".warningLevelSetting");
+var criticalLev = document.querySelector(".criticalLevelSetting");
+var settingsUpdateBtn = document.querySelector(".updateSettings");
 
-var warnLevel = 0;
-var criLevel = 0;
+function checkedRadioBtnSettings() {
 
-//reference for the radio btns.
-var checkBn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-
-function addBillBtn()
+    var checkedRadioBtnSettings = document.querySelector("input[name='radioType']:checked");
+    if (checkedRadioBtnSettings) 
 {
-    if (checkBn)
-    {
-        billItemTypeWithSettings = checkBn.value;
+        var radioType = checkedRadioBtnSettings.value;
+
     
-    if (billItemTypeWithSettings === "call")
+    if (radioType === "call")
     {
-        callsTotalSet += 7.20;
-    }
-    else if (billItemTypeWithSettings === "sms")
+        inputCall += CostCall;
+    } 
+    else if (radioType === "sms")
     {
-        smsTotalSet += 4.50; 
+        inputSms += SmsCost;
     }
 }
-    callTotalDisplay.innerHTML = callsTotalSet.toFixed(2);
-    smsTotalDisplay.innerHTML = smsTotalSet.toFixed(2);
-    allCostTotal = callsTotalSet + smsTotalSet;
-    totalBill.innerHTML = allCostTotal.toFixed(2);
-}
 
-function UpdateSettings()
-{
+    //update the totals that is displayed on the screen.
+    allCallsTotal.innerHTML = inputCall.toFixed(2);
+    allSmssTotal.innerHTML = inputSms.toFixed(2);
+    var totalCostSettings = inputCall + inputSms;
+    settingsTotal.innerHTML = totalCostSettings.toFixed(2);
+
+    if (totalCostSettings >= 50) {
+        // adding the danger class will make the text red
+        settingsTotal.classList.add("danger");
+    }
+    else if (totalCostSettings >= 30) {
+        settingsTotal.classList.add("warning");
+    }
     
 }
 
-addBtn.addEventListener('click', addBillBtn);
+function updateSettings()
+{
+    settingsUpdateBtn = document.querySelector(".updateSettings");
+
+    CostCall = Number(callCostElememts.value);
+    SmsCost = Number(smsCostElement.value);
+    warning = Number(warningLev.value);
+    critical = Number(criticalLev.value);
+
+    if(settingsTotal >= critical)
+    {
+        radioElement.disabled = true 
+    }
+}
+
+
+settingsUpdateBtn.addEventListener('click', updateSettings);//update button
+radioElement.addEventListener('click', checkedRadioBtnSettings);//radio button

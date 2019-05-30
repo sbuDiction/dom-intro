@@ -11,7 +11,7 @@ function checkedRadioBtn() {
 
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
     if (checkedRadioBtn) {
-        billItemType = checkedRadioBtn.value;
+        var billItemType = checkedRadioBtn.value;
 
     }
     if (billItemType === "call") {
