@@ -1,25 +1,4 @@
-// get a reference to the sms or call radio buttons
 
-// get refences to all the settings fields
-
-//get a reference to the add button
-
-//get a reference to the 'Update settings' button
-
-// create a variables that will keep track of all the settings
-
-// create a variables that will keep track of all three totals.
-
-//add an event listener for when the 'Update settings' button is pressed
-
-//add an event listener for when the add button is pressed
-
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the call / sms total
-// * add the appropriate value to the overall total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen.
-// * check the value thresholds and display the total value in the right color.
 var radioType = document.querySelector(".billItemTypeWithSettings");
 var radioElement = document.querySelector(".radioAddBtnSettings");
 var allCallsTotal = document.querySelector(".callTotalSettings");
@@ -67,12 +46,15 @@ function checkedRadioBtnSettings() {
     var totalCostSettings = inputCall + inputSms;
     settingsTotal.innerHTML = totalCostSettings.toFixed(2);
 
-    if (totalCostSettings >= 50) {
-        // adding the danger class will make the text red
-        settingsTotal.classList.add("danger");
+    colourUpdate();
+
+    if(totalCostSettings >= critical)
+    {
+        radioElement.disabled = true; 
     }
-    else if (totalCostSettings >= 30) {
-        settingsTotal.classList.add("warning");
+    else if (totalCostSettings < critical)
+    {
+        radioElement.disabled = false;
     }
     
 }
@@ -86,12 +68,39 @@ function updateSettings()
     warning = Number(warningLev.value);
     critical = Number(criticalLev.value);
 
-    if(settingsTotal >= critical)
+    allCallsTotal.innerHTML = inputCall.toFixed(2);
+    allSmssTotal.innerHTML = inputSms.toFixed(2);
+    var totalCostSettings = inputCall + inputSms;
+    settingsTotal.innerHTML = totalCostSettings.toFixed(2);
+    
+    colourUpdate();
+
+    if(totalCostSettings >= critical)
     {
-        radioElement.disabled = true 
+        radioElement.disabled = true; 
+    }
+    else if (totalCostSettings < critical)
+    {
+        radioElement.disabled = false;
     }
 }
 
+function colourUpdate()
+{
+    allCallsTotal.innerHTML = inputCall.toFixed(2);
+    allSmssTotal.innerHTML = inputSms.toFixed(2);
+    var totalCostSettings = inputCall + inputSms;
+    settingsTotal.innerHTML = totalCostSettings.toFixed(2);
+
+    if (totalCostSettings >= critical)
+    {
+        settingsTotal.classList.add("danger");
+    }
+    else if (totalCostSettings >= warning)
+    {
+        settingsTotal.classList.add("warning");
+    }
+}
 
 settingsUpdateBtn.addEventListener('click', updateSettings);//update button
 radioElement.addEventListener('click', checkedRadioBtnSettings);//radio button

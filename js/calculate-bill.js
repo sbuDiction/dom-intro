@@ -36,6 +36,11 @@ function calculateBtnClicked(){
     else if (billTotal >= 20){
         billTotalElement.classList.add("warning");
     }   
+    else
+    {
+        billTotalElement.classList.remove("danger");
+        billTotalElement.classList.remove("warning");
+    }
 
     billTotalElement.innerHTML = roundedBillTotal;
 }
