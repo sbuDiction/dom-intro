@@ -95,12 +95,19 @@ function colourUpdate()
     if (totalCostSettings >= critical)
     {
         settingsTotal.classList.add("danger");
+        settingsTotal.classList.remove("warning");
     }
     else if (totalCostSettings >= warning)
     {
         settingsTotal.classList.add("warning");
+        settingsTotal.classList.remove("danger");
+    }
+    else 
+    {
+        settingsTotal.classList.remove("danger");
+        settingsTotal.classList.remove("warning");
     }
 }
 
 settingsUpdateBtn.addEventListener('click', updateSettings);//update button
-radioElement.addEventListener('click', checkedRadioBtnSettings);//radio button
+radioElement.addEventListener('click', checkedRadioBtnSettings);//radio buttog
