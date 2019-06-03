@@ -87,7 +87,10 @@ function updateSettings()
 
 function colourUpdate()
 {
-   
+    allCallsTotal.innerHTML = inputCall.toFixed(2);
+    allSmssTotal.innerHTML = inputSms.toFixed(2);
+    var totalCostSettings = inputCall + inputSms;
+    settingsTotal.innerHTML = totalCostSettings.toFixed(2);
 
     if (totalCostSettings >= critical)
     {
@@ -96,12 +99,6 @@ function colourUpdate()
     else if (totalCostSettings >= warning)
     {
         settingsTotal.classList.add("warning");
-        settingsTotal,classList.remove("danger");
-    }
-    else 
-    {
-        settingsTotal.classList.remove("warning");
-        settingsTotal.classList.remove("danger");
     }
 }
 
