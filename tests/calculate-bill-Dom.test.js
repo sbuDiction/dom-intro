@@ -61,5 +61,36 @@ describe('calculateBtnClicked' , function(){
 
         
     });
+    it('should change the colour of the total if it exceeds 30 to red' , function(){
+        var instanceThree = Calculate();
 
+        instanceThree.check("call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,");
+        console.log(instanceThree.change(),)
+        assert.equal(instanceThree.change(),"stop!")
+        
+    });
+
+    it('should change the colour of the total if it exceeds 20 to orange' , function(){
+        var instanceThree = Calculate();
+
+        instanceThree.check("call,call,call,call,call,call,call,call,");
+        assert.equal(instanceThree.change(),"alert");
+        
+    });
+    it('should return the cost for one string if you inter a combination strings with spaces after comma "call, call"' , function(){
+        var instanceThree = Calculate();
+
+        instanceThree.check("call, call, call, call, call, call, call, call,");
+        console.log(instanceThree.bill(),)
+        assert.equal(instanceThree.bill(),"2.75");
+        
+    });
+    it('should return no cost or price if you inter a string with spaces without comma in the end "sms sms"' , function(){
+        var instanceThree = Calculate();
+
+        instanceThree.check("sms sms sms sms sms sms sms sms sms sms");
+        console.log(instanceThree.bill(),)
+        assert.equal(instanceThree.bill(),"0.00");
+        
+    });
 });
