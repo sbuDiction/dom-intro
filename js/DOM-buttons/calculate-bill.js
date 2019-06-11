@@ -50,6 +50,7 @@ var calculateBtn = document.querySelector(".calculateBtn");
 var billTotalElement = document.querySelector(".billTotal");
 var billStringField = document.querySelector(".billString");
 var instanceOne = Calculate();
+var instanceTwo = Calculate();
 
 function calculateBtnClicked(){
 
