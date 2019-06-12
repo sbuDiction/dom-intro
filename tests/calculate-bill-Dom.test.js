@@ -1,9 +1,9 @@
-describe('calculateBtnClicked' , function(){
+describe('Calculate bill' , function(){
     it('should return the cost if only 1 sms is sent' , function(){
         var instanceOne = Calculate();
 
         instanceOne.check("sms");
-        assert.equal(instanceOne.bill(),"0.75");
+        assert.equal(instanceOne.bill(),0.75);
 
         
     });
@@ -13,7 +13,7 @@ describe('calculateBtnClicked' , function(){
         var instanceOne = Calculate();
 
         instanceOne.check("call");
-        assert.equal(instanceOne.bill(),"2.75");
+        assert.equal(instanceOne.bill(),2.75);
     });
 
 
@@ -21,7 +21,7 @@ describe('calculateBtnClicked' , function(){
         var instanceTwo = Calculate();
         
         instanceTwo.check("call,call,call,call,call")
-        assert.equal(instanceTwo.bill(),"13.75");    
+        assert.equal(instanceTwo.bill(),13.75);    
     });
 
 
@@ -30,7 +30,7 @@ describe('calculateBtnClicked' , function(){
 
         instanceOne.check("sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,");
        
-        assert.equal(instanceOne.bill(),"15.00");
+        assert.equal(instanceOne.bill(),15.00);
 
         
     });
@@ -41,7 +41,7 @@ describe('calculateBtnClicked' , function(){
         instanceOne.check("sms,sms,sms,sms,sms,");
         instanceTwo.check("call,call,call,call,call,");
     
-        assert.equal(instanceOne.bill(),"3.75");
+        assert.equal(instanceOne.bill(),3.75);
 
         
     });
@@ -49,7 +49,7 @@ describe('calculateBtnClicked' , function(){
         var instanceOne = Calculate();
 
         instanceOne.check("");
-        assert.equal(instanceOne.bill(),"0.00");
+        assert.equal(instanceOne.bill(),0.00);
 
         
     });
@@ -57,7 +57,7 @@ describe('calculateBtnClicked' , function(){
         var instanceTwo = Calculate();
 
         instanceTwo.check("call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,");
-        assert.equal(instanceTwo.bill(),"107.25");
+        assert.equal(instanceTwo.bill(),107.25);
 
         
     });
@@ -82,7 +82,7 @@ describe('calculateBtnClicked' , function(){
 
         instanceThree.check("call, call, call, call, call, call, call, call,");
         console.log(instanceThree.bill(),)
-        assert.equal(instanceThree.bill(),"2.75");
+        assert.equal(instanceThree.bill(),2.75);
         
     });
     it('should return no cost or price if you inter a string with spaces without comma in the end "sms sms"' , function(){
@@ -90,7 +90,7 @@ describe('calculateBtnClicked' , function(){
 
         instanceThree.check("sms sms sms sms sms sms sms sms sms sms");
         console.log(instanceThree.bill(),)
-        assert.equal(instanceThree.bill(),"0.00");
+        assert.equal(instanceThree.bill(),0.00);
         
     });
 });
