@@ -61,22 +61,7 @@ describe('Calculate bill' , function(){
 
         
     });
-    it('should change the colour of the total if it exceeds 30 to red' , function(){
-        var instanceThree = Calculate();
-
-        instanceThree.check("call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,call,");
-        console.log(instanceThree.change(),)
-        assert.equal(instanceThree.change(),"stop!")
-        
-    });
-
-    it('should change the colour of the total if it exceeds 20 to orange' , function(){
-        var instanceThree = Calculate();
-
-        instanceThree.check("call,call,call,call,call,call,call,call,");
-        assert.equal(instanceThree.change(),"alert");
-        
-    });
+    
     it('should return the cost for one string if you inter a combination strings with spaces after comma "call, call"' , function(){
         var instanceThree = Calculate();
 
