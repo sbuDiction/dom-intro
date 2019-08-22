@@ -7,29 +7,28 @@ let instance = TextBillTotal();
 
 addBtn.addEventListener("click", function () {
     instance.bill(billTypeText.value);
+    loadMyTemplate()
 })
+
 //custom helpers :-)
-Handlebars.registerHelper("warning", function () {
+Handlebars.registerHelper("wrning", function () {
     if (instance.level() === "alert") {
         return true;
     }
 })
-Handlebars.registerHelper("danger", function () {
+
+Handlebars.registerHelper("dnger", function () {
     if (instance.level() === "stop") {
         return true;
     }
 })
-window.addEventListener("load", function () {
-    let userData = {
-        callData: "R" + instance.totalOne(),
-        smsData: "R" + instance.totalTwo(),
-        totalData: "R" + instance.totalBill()
-    };
 
-   let userDataHTML = template(userData);
-    userDataElem.innerHTML = userDataHTML;
+window.addEventListener("load", function () {
+loadMyTemplate()
 })
-window.addEventListener("click", function () {
+
+// window.addEventListener("click", function () {
+const loadMyTemplate = () => {
     let userData = {
         callData: "R" + instance.totalOne(),
         smsData: "R" + instance.totalTwo(),
@@ -38,4 +37,6 @@ window.addEventListener("click", function () {
 
     let userDataHTML = template(userData);
     userDataElem.innerHTML = userDataHTML;
-})
+}
+
+// })
