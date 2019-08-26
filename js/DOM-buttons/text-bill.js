@@ -8,6 +8,7 @@ let instance = TextBillTotal();
 addBtn.addEventListener("click", function () {
     instance.bill(billTypeText.value);
     loadMyTemplate()
+
 })
 
 //custom helpers :-)
@@ -24,17 +25,17 @@ Handlebars.registerHelper("dnger", function () {
 })
 
 window.addEventListener("load", function () {
-loadMyTemplate()
+    loadMyTemplate()
 })
 
 // window.addEventListener("click", function () {
+
 const loadMyTemplate = () => {
     let userData = {
         callData: "R" + instance.totalOne(),
         smsData: "R" + instance.totalTwo(),
-        totalData: "R" + instance.totalBill()
+        totalData: "R" + instance.totalBill(),
     };
-
     let userDataHTML = template(userData);
     userDataElem.innerHTML = userDataHTML;
 }
