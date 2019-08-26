@@ -8,33 +8,6 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 
-  <script type="text/x-template" class="userTemplate">
-    <table> 
-    <tr>
-      <td>Call total</td>
-      <td>{{callData}}</td>
-    </tr>
-    <tr>
-      <td>SMS total</td>
-      <td>{{smsData}}</td>
-    </tr>
-    <tr>
-        {{#if (wrning)}}
-      <td>Total</td>
-      <td class="warning">{{totalData}}</td>
-      {{else if (dnger)}}
-      <td>Total</td>
-      <td class="danger">{{totalData}}</td>
-      {{else}}
-      <td>Total</td>
-      <td>{{totalData}}</td>
-      {{/if}}
-    </tr>
-  </table>
-  </script>
-
-
-
 </head>
 
 <body>
@@ -130,9 +103,30 @@
             <h5>Totals</h5>
             <table>
               <tbody class="userDataTextBill">
+                <script type="text/x-template" class="userTemplate">
 
+                <tr>
+                  <td>Call total</td>
+                  <td>{{callData}}</td>
+                </tr>
+                <tr>
+                  <td>SMS total</td>
+                  <td>{{smsData}}</td>
+                </tr>
+                <tr>
+                  {{#if (wrning)}}
+                  <td>Total</td>
+                  <td class="warning">{{totalData}}</td>
+                  {{else if (dnger)}}
+                  <td>Total</td>
+                  <td class="danger">{{totalData}}</td>
+                  {{else}}
+                  <td>Total</td>
+                  <td>{{totalData}}</td>
+                  {{/if}}
+                </tr>
 
-
+              </script>
               </tbody>
             </table>
 
